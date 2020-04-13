@@ -4,18 +4,18 @@
 package x11
 
 import (
-	"github.com/bitbandi/go-x11/blake"
-	"github.com/bitbandi/go-x11/bmw"
-	"github.com/bitbandi/go-x11/cubed"
-	"github.com/bitbandi/go-x11/echo"
-	"github.com/bitbandi/go-x11/groest"
-	"github.com/bitbandi/go-x11/hash"
-	"github.com/bitbandi/go-x11/jhash"
-	"github.com/bitbandi/go-x11/keccak"
-	"github.com/bitbandi/go-x11/luffa"
-	"github.com/bitbandi/go-x11/shavite"
-	"github.com/bitbandi/go-x11/simd"
-	"github.com/bitbandi/go-x11/skein"
+	"github.com/marpme/go-x17/blake"
+	"github.com/marpme/go-x17/bmw"
+	"github.com/marpme/go-x17/cubed"
+	"github.com/marpme/go-x17/echo"
+	"github.com/marpme/go-x17/groest"
+	"github.com/marpme/go-x17/hash"
+	"github.com/marpme/go-x17/jhash"
+	"github.com/marpme/go-x17/keccak"
+	"github.com/marpme/go-x17/luffa"
+	"github.com/marpme/go-x17/shavite"
+	"github.com/marpme/go-x17/simd"
+	"github.com/marpme/go-x17/skein"
 )
 
 ////////////////

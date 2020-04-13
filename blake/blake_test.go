@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bitbandi/go-x11/nist"
+	"github.com/marpme/go-x17/nist"
 )
 
 ////////////////
@@ -55,7 +55,7 @@ func runNistSum(t *testing.T, idx uint64) {
 		}
 
 		rest := dgst.Sum(rbuf[0:0])
-		hash, _ := hex.DecodeString(kNistResult[idx])
+		hash, _ := hex.DecodeString(NistResult[idx])
 
 		if !nist.IsEqual(hash, rbuf[:]) {
 			t.Errorf("\na) Sum %d:\n expected: %X\n      got: %X", idx, hash, rest[:])
@@ -73,7 +73,7 @@ func runNistSum(t *testing.T, idx uint64) {
 		}
 
 		rest = dgst.Sum(rbuf[0:0])
-		hash, _ = hex.DecodeString(kNistResult[idx])
+		hash, _ = hex.DecodeString(NistResult[idx])
 
 		if !nist.IsEqual(hash, rbuf[:]) {
 			t.Errorf("\nb) Sum %d:\n expected: %X\n      got: %X", idx, hash, rest[:])
@@ -87,7 +87,7 @@ func runNistClose(t *testing.T, idx uint64) {
 	rest := [64]byte{}
 	dmsg := nist.Get(idx)
 
-	hash, _ := hex.DecodeString(kNistResult[idx])
+	hash, _ := hex.DecodeString(NistResult[idx])
 
 	if extr == 0 {
 		dgst.Write(dmsg)
@@ -118,7 +118,7 @@ func runNistClose(t *testing.T, idx uint64) {
 
 ////////////////
 
-var kNistResult = []string{
+var NistResult = []string{
 	"A8CFBBD73726062DF0C6864DDA65DEFE58EF0CC52A5625090FA17601E1EECD1B628E94F396AE402A00ACC9EAB77B4D4C2E852AAAA25A636D80AF3FC7913EF5B8",
 	"F0A9B5B755802205FD1A1F56E7A03D7573D46E8BA5037517281560FBE6DB03C174B00597FB4E1427747C7382FE63C6692F05A5E0841E99883CB7C272C2A62191",
 	"777E21C87839BADDE651FC37334F6D7CDC8316914E7CB76DAB2EFAB90C62EF307E590936349B85041542F00D94D870633957699E818DB79E1E064B0991A9CD1A",

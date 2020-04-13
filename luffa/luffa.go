@@ -6,7 +6,7 @@ package luffa
 import (
 	"fmt"
 
-	"github.com/bitbandi/go-x11/hash"
+	"github.com/marpme/go-x17/hash"
 )
 
 // HashSize holds the size of a hash in bytes.

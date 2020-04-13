@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bitbandi/go-x11/nist"
+	"github.com/marpme/go-x17/nist"
 )
 
 ////////////////
