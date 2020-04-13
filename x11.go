@@ -1,7 +1,7 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package x11
+package x17
 
 import (
 	"github.com/marpme/go-x17/blake"
@@ -21,7 +21,7 @@ import (
 ////////////////
 
 // Hash contains the state objects
-// required to perform the x11.Hash.
+// required to perform the x17.Hash.
 type Hash struct {
 	tha [64]byte
 	thb [64]byte
@@ -39,7 +39,7 @@ type Hash struct {
 	skein   hash.Digest
 }
 
-// New returns a new object to compute a x11 hash.
+// New returns a new object to compute a x17 hash.
 func New() *Hash {
 	ref := &Hash{}
 	ref.blake = blake.New()

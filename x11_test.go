@@ -1,7 +1,7 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package x11
+package x17
 
 import (
 	"bytes"
