@@ -9,6 +9,7 @@ import (
 	"github.com/marpme/go-x17/cubed"
 	"github.com/marpme/go-x17/echo"
 	"github.com/marpme/go-x17/groest"
+	"github.com/marpme/go-x17/hamsi"
 	"github.com/marpme/go-x17/hash"
 	"github.com/marpme/go-x17/jhash"
 	"github.com/marpme/go-x17/keccak"
@@ -94,5 +95,7 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ref.echo.Write(ta)
 	ref.echo.Close(tb, 0, 0)
 
-	copy(dst, tb)
+	ta = hamsi.Sum(tb)
+
+	copy(dst, ta)
 }
