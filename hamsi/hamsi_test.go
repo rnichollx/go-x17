@@ -19,7 +19,7 @@ func TestHash(t *testing.T) {
 		hex.Encode(destination, out[:])
 
 		if !bytes.Equal(destination[:], tsInfo[i].out[:]) {
-			t.Errorf("%s: invalid hash", tsInfo[i].id)
+			t.Errorf("%s: invalid hash expected: %s, got: %s", tsInfo[i].id, tsInfo[i].out[:], destination[:])
 		}
 	}
 }
