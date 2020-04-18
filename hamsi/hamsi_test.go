@@ -5,7 +5,6 @@ package hamsi
 import (
 	"bytes"
 	"encoding/hex"
-	"fmt"
 	"testing"
 )
 
@@ -16,9 +15,8 @@ func TestHash(t *testing.T) {
 		length := len(tsInfo[i].out)
 		destination := make([]byte, length)
 
-		out = Sum(tsInfo[i].in[:])
+		out = SumBig(tsInfo[i].in[:])
 		hex.Encode(destination, out[:])
-		fmt.Printf("%s\n", destination)
 
 		if !bytes.Equal(destination[:], tsInfo[i].out[:]) {
 			t.Errorf("%s: invalid hash", tsInfo[i].id)

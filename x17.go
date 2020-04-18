@@ -95,7 +95,7 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ref.echo.Write(ta)
 	ref.echo.Close(tb, 0, 0)
 
-	ta = hamsi.Sum(tb)
+	ta = hamsi.SumBig(tb)
 
 	copy(dst, ta)
 }

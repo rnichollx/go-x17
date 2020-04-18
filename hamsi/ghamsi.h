@@ -8,16 +8,14 @@
 #include "sph_hamsi.h"
 
 
-inline void HashHamsi(const char *input, int inputlen, char *output)
+inline void HashHamsi(const char *input, char *output)
 {
-    sph_hamsi512_context      ctx_hamsi;
-    
+    sph_hamsi512_context ctx_hamsi;
     uint32_t hash[16];
 
     sph_hamsi512_init(&ctx_hamsi);
-    sph_hamsi512 (&ctx_hamsi, input, inputlen);
+    sph_hamsi512 (&ctx_hamsi, input, 64);
     sph_hamsi512_close(&ctx_hamsi, hash);
-
 
     memcpy(output, hash, 64);
 }

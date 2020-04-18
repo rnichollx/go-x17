@@ -22,6 +22,7 @@ script:
   - go test -coverprofile=shavite.coverprofile ./shavite
   - go test -coverprofile=simd.coverprofile ./simd
   - go test -coverprofile=skein.coverprofile ./skein
+  - go test -coverprofile=hamsi.coverprofile ./hamsi
   - go test -coverprofile=x17.coverprofile .
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci

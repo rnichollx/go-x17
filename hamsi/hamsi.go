@@ -6,13 +6,14 @@ package hamsi
 // #include "ghamsi.h"
 import "C"
 
-// Sum creates a hamsi hash of the given bytes and returns exactly 64 bytes.
-func Sum(data []byte) []byte {
-	var cresstr [64]C.char
-	var retbuf []byte
+// SumBig creates a hamsi hash of the given bytes and returns always exactly 64 bytes.
+func SumBig(inputData []byte) []byte {
+	var hashOutput [64]C.char
+	var returnBuffer [64]byte
 
-	C.HashHamsi(C.CString(string(data)), C.int(len(data)), &cresstr[0])
-	copy(retbuf[:], []byte(C.GoStringN(&cresstr[0], 64)[:64]))
+	C.HashHamsi(C.CString(string(inputData)), &hashOutput[0])
+	outputBuffer := []byte(C.GoStringN(&hashOutput[0], 64))
 
-	return retbuf
+	copy(returnBuffer[:], outputBuffer)
+	return returnBuffer[:]
 }
