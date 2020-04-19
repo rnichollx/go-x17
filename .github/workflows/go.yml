@@ -27,5 +27,5 @@ jobs:
     
     - name: Upload coverage
       run: |
-      GO111MODULE=off go get github.com/mattn/goveralls
-      $(go env GOPATH)/bin/goveralls -coverprofile=gover.coverprofile -service=github
+        GO111MODULE=off go get github.com/mattn/goveralls
+        $(go env GOPATH)/bin/goveralls -coverprofile=gover.coverprofile -service=github
