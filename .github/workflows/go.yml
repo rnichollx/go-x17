@@ -24,8 +24,3 @@ jobs:
       
     - name: Test all packages
       run: go test -v -coverprofile=gover.coverprofile ./...
-    
-    - name: Upload coverage
-      run: |
-        GO111MODULE=off go get github.com/mattn/goveralls
-        $(go env GOPATH)/bin/goveralls -coverprofile=gover.coverprofile -service=github
