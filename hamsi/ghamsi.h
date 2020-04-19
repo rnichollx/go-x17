@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void HashHamsi(const char *input, char *output);
+void HashHamsi(const char *input, int inputLen, char *output);
 
 #ifdef __cplusplus
 }

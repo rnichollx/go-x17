@@ -11,7 +11,7 @@ func SumBig(inputData []byte) []byte {
 	var hashOutput [64]C.char
 	var returnBuffer [64]byte
 
-	C.HashHamsi(C.CString(string(inputData)), &hashOutput[0])
+	C.HashHamsi(C.CString(string(inputData)), C.int(len(inputData)), &hashOutput[0])
 	outputBuffer := []byte(C.GoStringN(&hashOutput[0], 64))
 
 	copy(returnBuffer[:], outputBuffer)
