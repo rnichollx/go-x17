@@ -99,5 +99,5 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ta = hamsi.SumBig(tb)
 	tb = fugue.SumBig(ta)
 
-	copy(dst, ta)
+	copy(dst, tb)
 }
