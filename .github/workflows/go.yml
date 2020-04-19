@@ -30,4 +30,4 @@ jobs:
       run: go test -v -coverprofile=gover.coverprofile ./...
     
     - name: Upload coverage
-      run: goveralls -coverprofile=gover.coverprofile -service=github
+      run: go run github.com/mattn/goveralls -coverprofile=gover.coverprofile -service=github
