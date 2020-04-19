@@ -8,6 +8,7 @@ import (
 	"github.com/marpme/go-x17/bmw"
 	"github.com/marpme/go-x17/cubed"
 	"github.com/marpme/go-x17/echo"
+	"github.com/marpme/go-x17/fugue"
 	"github.com/marpme/go-x17/groest"
 	"github.com/marpme/go-x17/hamsi"
 	"github.com/marpme/go-x17/hash"
@@ -96,6 +97,7 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ref.echo.Close(tb, 0, 0)
 
 	ta = hamsi.SumBig(tb)
+	tb = fugue.SumBig(ta)
 
-	copy(dst, ta)
+	copy(dst, tb)
 }

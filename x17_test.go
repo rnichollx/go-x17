@@ -24,7 +24,7 @@ func TestHash(t *testing.T) {
 		// Test Print if necessary.
 		// fmt.Printf("%s\n", dest)
 		if !bytes.Equal(dest[:], tsInfo[i].out[:]) {
-			t.Errorf("%s: invalid hash", tsInfo[i].id)
+			t.Errorf("%s: invalid hash expected: %s, got: %s", tsInfo[i].id, tsInfo[i].out[:], dest[:])
 		}
 	}
 }
@@ -39,16 +39,16 @@ var tsInfo = []struct {
 	{
 		"Empty",
 		[]byte(""),
-		[]byte("528b9b84a5492b92e219c668bb3f069442e440c6db882bba7ba358597f602deb"),
+		[]byte("6db4782561b9d204ab5cafed83175a8198bb65e48722ffb997b36a13fc5fbe33"),
 	},
 	{
 		"Dash",
 		[]byte("DASH"),
-		[]byte("cc5881c1e5b54d13cdd9b4db8f0f1ef161c062010453845ca11345e27fde6cae"),
+		[]byte("917b3ee1904c019af5319f70c197a449711c9303d26bb942a5b2d1df71160b5f"),
 	},
 	{
 		"Fox",
 		[]byte("The quick brown fox jumps over the lazy dog"),
-		[]byte("e1042242ad97ac8b648e58c9ab7d9096b08a22d91ac9397ba3990d5a0bdcd143"),
+		[]byte("fe8b334eaa56ddf2d29df1861f163af7241cf151d96e51d9ebd5f66b65661ae7"),
 	},
 }
