@@ -39,16 +39,16 @@ var tsInfo = []struct {
 	{
 		"Empty",
 		[]byte(""),
-		[]byte("6db4782561b9d204ab5cafed83175a8198bb65e48722ffb997b36a13fc5fbe33"),
+		[]byte("e81881125bc6ed9c99d7403daf8d23a25fc107110843754fdea5d81a1cf34344"),
 	},
 	{
 		"Dash",
 		[]byte("DASH"),
-		[]byte("917b3ee1904c019af5319f70c197a449711c9303d26bb942a5b2d1df71160b5f"),
+		[]byte("2be61b04480c95c86732066eb2918dd8957da36d8d77ee14194f265d76530e24"),
 	},
 	{
 		"Fox",
 		[]byte("The quick brown fox jumps over the lazy dog"),
-		[]byte("fe8b334eaa56ddf2d29df1861f163af7241cf151d96e51d9ebd5f66b65661ae7"),
+		[]byte("b1ad1118c01385dfed9f0a89801febe7a650202bd6a48151ba18e8b969f55d1a"),
 	},
 }

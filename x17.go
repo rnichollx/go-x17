@@ -15,6 +15,7 @@ import (
 	"github.com/marpme/go-x17/jhash"
 	"github.com/marpme/go-x17/keccak"
 	"github.com/marpme/go-x17/luffa"
+	"github.com/marpme/go-x17/shabal"
 	"github.com/marpme/go-x17/shavite"
 	"github.com/marpme/go-x17/simd"
 	"github.com/marpme/go-x17/skein"
@@ -97,7 +98,10 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ref.echo.Close(tb, 0, 0)
 
 	ta = hamsi.SumBig(tb)
+
 	tb = fugue.SumBig(ta)
 
-	copy(dst, tb)
+	ta = shabal.SumBig(tb)
+
+	copy(dst, ta)
 }
