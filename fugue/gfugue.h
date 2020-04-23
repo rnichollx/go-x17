@@ -1,5 +1,5 @@
-#ifndef VERGE_CRYPTO_POW_HAMSI_H
-#define VERGE_CRYPTO_POW_HAMSI_H
+#ifndef VERGE_CRYPTO_POW_FUGUE_H
+#define VERGE_CRYPTO_POW_FUGUE_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,4 +11,4 @@ void HashFugue(const char *input, int inputLen, char *output);
 }
 #endif
 
-#endif // VERGE_CRYPTO_POW_HAMSI_H
+#endif // VERGE_CRYPTO_POW_FUGUE_H
