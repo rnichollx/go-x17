@@ -2,24 +2,24 @@ sudo: false
 language: go
 go:
   - 1.x
-  
+
 env:
   global:
     - CC_TEST_REPORTER_ID=354ceffce5d00f413db80f1dedae26b71c55c4659878506e094ed961b3d4c295
-    
+
 before_install:
   - go get github.com/modocache/gover
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
-  
+
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  
+
 install:
   - go get -t ./...
-  
+
 script:
   - go test -coverprofile=nist.coverprofile ./nist
   - go test -coverprofile=blake.coverprofile ./blake
@@ -40,6 +40,7 @@ script:
   - go test -coverprofile=x17.coverprofile .
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci
-  
+  - go test -v -coverprofile=c.out ./...
+
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
