@@ -37,6 +37,7 @@ script:
   - go test -coverprofile=hamsi.coverprofile ./hamsi
   - go test -coverprofile=fugue.coverprofile ./fugue
   - go test -coverprofile=shabal.coverprofile ./shabal
+  - go test -coverprofile=whirlpool_x17.coverprofile ./whirlpool_x17
   - go test -coverprofile=x17.coverprofile .
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci
