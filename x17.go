@@ -4,6 +4,8 @@
 package x17
 
 import (
+	"crypto/sha512"
+
 	"github.com/marpme/go-x17/blake"
 	"github.com/marpme/go-x17/bmw"
 	"github.com/marpme/go-x17/cubed"
@@ -19,6 +21,7 @@ import (
 	"github.com/marpme/go-x17/shavite"
 	"github.com/marpme/go-x17/simd"
 	"github.com/marpme/go-x17/skein"
+	"github.com/marpme/go-x17/whirlpool_x17"
 )
 
 ////////////////
@@ -102,6 +105,13 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	tb = fugue.SumBig(ta)
 
 	ta = shabal.SumBig(tb)
+
+	whirlpool := whirlpool_x17.New()
+	whirlpool.Write(ta)
+	tb = whirlpool.Sum(nil)
+
+	sha512Hash := sha512.Sum512(tb)
+	ta = sha512Hash[:]
 
 	copy(dst, ta)
 }
