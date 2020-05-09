@@ -1,4 +1,4 @@
-# go-x17 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/marpme/go-x17/blob/master/license.md) [![godoc](https://img.shields.io/badge/go-documentation-blue.svg)](https://godoc.org/github.com/marpme/go-x17) [![Build Status](https://travis-ci.org/marpme/go-x17.svg?branch=master)](https://travis-ci.org/marpme/go-x17) [![Coverage Status](https://coveralls.io/repos/github/marpme/go-x17/badge.svg?branch=master)](https://coveralls.io/github/marpme/go-x17?branch=master)
+# go-x17 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/marpme/go-x17/blob/master/license.md) [![godoc](https://img.shields.io/badge/go-documentation-blue.svg)](https://godoc.org/github.com/marpme/go-x17) ![Go](https://github.com/marpme/go-x17/workflows/Go/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/marpme/go-x17/badge.svg?branch=master)](https://coveralls.io/github/marpme/go-x17?branch=master)
 
 Implements the x17 hash and required functions in go.
 
