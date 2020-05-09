@@ -5,6 +5,8 @@ package x17
 
 import (
 	"crypto/sha512"
+	"encoding/binary"
+	"log"
 
 	"github.com/marpme/go-x17/blake"
 	"github.com/marpme/go-x17/bmw"
@@ -14,6 +16,7 @@ import (
 	"github.com/marpme/go-x17/groest"
 	"github.com/marpme/go-x17/hamsi"
 	"github.com/marpme/go-x17/hash"
+	"github.com/marpme/go-x17/haval"
 	"github.com/marpme/go-x17/jhash"
 	"github.com/marpme/go-x17/keccak"
 	"github.com/marpme/go-x17/luffa"
@@ -31,6 +34,8 @@ import (
 type Hash struct {
 	tha [64]byte
 	thb [64]byte
+
+	le [4]uint64
 
 	blake   hash.Digest
 	bmw     hash.Digest
@@ -59,6 +64,7 @@ func New() *Hash {
 	ref.shavite = shavite.New()
 	ref.simd = simd.New()
 	ref.skein = skein.New()
+
 	return ref
 }
 
@@ -100,11 +106,11 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	ref.echo.Write(ta)
 	ref.echo.Close(tb, 0, 0)
 
-	ta = hamsi.SumBig(tb)
+	hamsi.SumBig(tb, ta[:])
 
-	tb = fugue.SumBig(ta)
+	fugue.SumBig(ta, tb[:])
 
-	ta = shabal.SumBig(tb)
+	shabal.SumBig(tb, ta[:])
 
 	whirlpool := whirlpool_x17.New()
 	whirlpool.Write(ta)
@@ -113,5 +119,26 @@ func (ref *Hash) Hash(src []byte, dst []byte) {
 	sha512Hash := sha512.Sum512(tb)
 	ta = sha512Hash[:]
 
-	copy(dst, ta)
+	haval256Hash := haval.New()
+	haval256Hash.Update(ta, 0, len(ta))
+	tb = haval256Hash.Digest()
+
+	ref.convert32BytesToBE(tb)
+	copy(dst, tb)
+}
+
+func (ref *Hash) convert32BytesToBE(hashedBytes []byte) {
+
+	if len(hashedBytes) < 32 {
+		log.Fatal("Expected at least 32 bytes to be converted into big endian.")
+	}
+
+	ref.le[0] = binary.LittleEndian.Uint64(hashedBytes[0:8])
+	ref.le[1] = binary.LittleEndian.Uint64(hashedBytes[8:16])
+	ref.le[2] = binary.LittleEndian.Uint64(hashedBytes[16:24])
+	ref.le[3] = binary.LittleEndian.Uint64(hashedBytes[24:32])
+
+	for i := 0; i < len(ref.le); i++ {
+		binary.BigEndian.PutUint64(hashedBytes[i*8:(i+1)*8], ref.le[len(ref.le)-1-i])
+	}
 }

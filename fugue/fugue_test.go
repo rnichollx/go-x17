@@ -11,13 +11,13 @@ import (
 )
 
 func TestHash(t *testing.T) {
-	out := []byte{}
+	out := make([]byte, 64)
 
 	for i := range tsInfo {
 		length := len(tsInfo[i].out)
 		destination := make([]byte, length)
 
-		out = SumBig(tsInfo[i].in[:])
+		SumBig(tsInfo[i].in[:], out[:])
 		hex.Encode(destination, out[:])
 
 		if !bytes.Equal(destination[:], tsInfo[i].out[:]) {
@@ -58,17 +58,17 @@ func TestNistSum(t *testing.T) {
 
 func runNistSum(t *testing.T, idx uint64) {
 	if extr := idx & 7; extr == 0 {
-		rbuf := []byte{}
+		rbuf := make([]byte, 64)
 		dmsg := nist.Get(idx)
 
-		rbuf = SumBig(dmsg)
+		SumBig(dmsg, rbuf[:])
 		hash, _ := hex.DecodeString(NistResult[idx])
 
 		if !nist.IsEqual(hash, rbuf[:]) {
 			t.Errorf("\na) Sum %d:\n expected: %X\n      got: %X", idx, hash, rbuf[:])
 		}
 
-		rbuf = SumBig(dmsg)
+		SumBig(dmsg, rbuf[:])
 		hash, _ = hex.DecodeString(NistResult[idx])
 
 		if !nist.IsEqual(hash, rbuf[:]) {
