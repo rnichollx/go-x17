@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/rnicholl/go-x17/hash"
+	"github.com/rnichollx/go-x17/hash"
 )
 
 // HashSize holds the size of a hash in bytes.
