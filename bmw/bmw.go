@@ -6,7 +6,7 @@ package bmw
 import (
 	"fmt"
 
-	"github.com/marpme/go-x17/hash"
+	"github.com/rnicholl/go-x17/hash"
 )
 
 // HashSize holds the size of a hash in bytes.

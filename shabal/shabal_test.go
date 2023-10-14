@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/marpme/go-x17/nist"
+	"github.com/rnicholl/go-x17/nist"
 )
 
 func TestHash(t *testing.T) {
